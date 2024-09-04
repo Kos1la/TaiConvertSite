@@ -1,15 +1,12 @@
-import { fetchCodes } from "./index.js";
-import { renderCurrencyItem } from "./markups.js";
-import state from "./state.js";
-import variables from "./variables.js";
+import { fetchCodes } from './index.js';
+import { renderCurrencyItem } from './markups.js';
+import state from './state.js';
+import variables from './variables.js';
 
 const { success, currentCurrency, currentCurrencyList } = variables;
 
 const insertCurrency = (data) => {
-  currentCurrencyList.insertAdjacentHTML(
-    "afterbegin",
-    renderCurrencyItem(data)
-  );
+  currentCurrencyList.insertAdjacentHTML('afterbegin', renderCurrencyItem(data));
 };
 
 const insertCurrencies = () => {
@@ -17,7 +14,7 @@ const insertCurrencies = () => {
   const { conversion_rates: rates, base_code: fromCode } = currency;
 
   currentCurrency.innerHTML = renderCurrencyItem(currency);
-  currentCurrencyList.innerHTML = "";
+  currentCurrencyList.innerHTML = '';
 
   Object.entries(rates).forEach(([code, rate]) => {
     if (code === fromCode || !currencies.includes(code)) return;
@@ -57,7 +54,7 @@ const removeCurrency = (target) => {
 };
 
 const changeCurrency = () => {
-  currentCurrency.parentElement.classList.add("active");
+  currentCurrency.parentElement.classList.add('active');
 };
 
 export const handleActionClick = ({ target }) => {
@@ -72,14 +69,14 @@ export const handleActionClick = ({ target }) => {
 };
 
 export const handleSingleSelectChange = ({ target }) => {
-  target.parentElement.classList.remove("active");
+  target.parentElement.classList.remove('active');
   state.currency = { ...state.currency, code: target.value };
   fetchLatest();
-  target.value = "";
+  target.value = '';
 };
 
 export const addCurrency = ({ currentTarget }) => {
-  currentTarget.parentElement.classList.add("active");
+  currentTarget.parentElement.classList.add('active');
 };
 
 export const handleAddSelectChange = ({ target }) => {
@@ -87,14 +84,12 @@ export const handleAddSelectChange = ({ target }) => {
     currency: { conversion_rates: rates, base_code: fromCode },
   } = state;
 
-  const currency = Object.entries(rates).find(
-    ([key]) => key === target.value && key !== fromCode
-  );
+  const currency = Object.entries(rates).find(([key]) => key === target.value && key !== fromCode);
 
   if (currency) {
     const [code, amount] = currency;
     insertCurrency({ ...state.currency, code, rate: amount });
   }
-  target.parentElement.classList.remove("active");
-  target.value = "";
+  target.parentElement.classList.remove('active');
+  target.value = '';
 };

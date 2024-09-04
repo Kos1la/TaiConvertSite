@@ -1,19 +1,20 @@
 export default {
-  url: `my token`,
+  // url: `my token`,
+  url: 'https://v6.exchangerate-api.com/v6/4994906b92ac6f4a8684ff06',
   codes: [],
   pair: {
-    from: "RUB",
-    to: "THB",
+    from: 'RUB',
+    to: 'THB',
   },
-  amount: "",
+  amount: '',
   loading: false,
-  currentTab: "convert",
+  currentTab: 'convert',
   currency: {
-    code: "USD",
+    code: 'USD',
   },
-  currencies: ["THB", "RUB"],
+  currencies: ['THB', 'RUB'],
   actions: {
-    remove: "удалить",
-    change: "изменить",
+    remove: 'удалить',
+    change: 'изменить',
   },
 };

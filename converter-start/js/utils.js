@@ -4,8 +4,8 @@ export const getFullTitle = (codes, code) => {
 };
 
 export const formatToCurrency = (code, amount) => {
-  return new Intl.NumberFormat("ru-US", {
-    style: "currency",
+  return new Intl.NumberFormat('ru-US', {
+    style: 'currency',
     currency: code,
     maximumFractionDigits: 2,
   }).format(amount);
@@ -13,10 +13,10 @@ export const formatToCurrency = (code, amount) => {
 
 export const convertTime = (date) => {
   const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   };
 
-  return new Intl.DateTimeFormat("ru-US", options).format(new Date(date));
+  return new Intl.DateTimeFormat('ru-US', options).format(new Date(date));
 };
